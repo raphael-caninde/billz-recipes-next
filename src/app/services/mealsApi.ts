@@ -1,6 +1,6 @@
 import { axiosiInstance } from './api';
 
-export async function getFoodsSearch(food = '') {
+export async function getSearchFoods(food = '') {
   const foods = await axiosiInstance.get(`/search.php?s=${food}`);
 
   return foods.data;
