@@ -1,3 +1,9 @@
+import Foods from './components/Foods';
+
 export default function Home() {
-  return <main className=''></main>;
+  return (
+    <main>
+      <Foods />
+    </main>
+  );
 }
