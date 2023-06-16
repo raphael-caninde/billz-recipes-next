@@ -6,13 +6,13 @@ import { useQuery } from 'react-query';
 
 import { getSearchFoods } from '@/app/services/mealsApi';
 
-interface IFoods {
+interface IRecipes {
   idMeal: string;
   strMealThumb: string;
   strMeal: string;
 }
 
-export default function Foods() {
+export default function ContainerRecipes() {
   const { data } = useQuery('foods', () => getSearchFoods());
 
   return (
@@ -22,13 +22,13 @@ export default function Foods() {
         md:w-[90%]
       '
     >
-      {data?.meals.map((food: IFoods) => (
+      {data?.meals.map((recip: IRecipes) => (
         <div
           className='
             m-2 flex h-[20rem] w-[90%] flex-col bg-zinc-100
             sm:h-[28rem] sm:w-[80%] md:h-72 md:w-[20rem]
         '
-          key={food.idMeal}
+          key={recip.idMeal}
         >
           <Link
             className='
@@ -36,13 +36,13 @@ export default function Foods() {
             href={'/details'}
           >
             <div className='relative w-full flex-1 md:h-4/5'>
-              <Image src={food.strMealThumb} alt={food.strMeal} fill={true} />
+              <Image src={recip.strMealThumb} alt={recip.strMeal} fill={true} />
             </div>
             <p
               className='
                 ml-3 w-full py-4 text-xl font-medium text-zinc-800'
             >
-              {food.strMeal}
+              {recip.strMeal}
             </p>
           </Link>
         </div>
