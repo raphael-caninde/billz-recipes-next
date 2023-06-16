@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='pt-br' className='bg-recipe-app'>
-      <body className={`${inter.className} h-screen w-screen`}>
+      <body className={`${inter.className}`}>
         <QueryClientProvider client={queryClient}>
           <Header />
           {children}
