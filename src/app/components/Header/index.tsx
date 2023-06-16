@@ -4,9 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useQuery } from 'react-query';
 
-import { latters } from '@/app/const/latters';
 import { faSearch, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { latters } from '@/app/constants/latters';
 
 import logo from '../../../../public/logo.png';
 import { getCategory } from '../../services/mealsApi';
