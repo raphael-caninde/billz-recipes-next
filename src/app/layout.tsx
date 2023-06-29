@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 
 import { Header } from './components/Header';
-import { ReactQueryProvider } from './ReactQueryProvider';
+import { Providers } from './providers/Providers';
 
 import './globals.css';
 
@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang='pt-br' className='bg-recipe-app'>
       <body className={`${inter.className}`}>
-        <ReactQueryProvider>
+        <Providers>
           <Header />
           {children}
-        </ReactQueryProvider>
+        </Providers>
       </body>
     </html>
   );
