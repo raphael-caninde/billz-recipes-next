@@ -1,8 +1,6 @@
 'use client';
 
-import { useQuery } from 'react-query';
-
-import { getSearchFoods } from '@/app/services/mealsApi';
+import { useRecipesContext } from '@/app/context/RecipesContext';
 
 import { RecipeCard } from '../RecipeCard';
 
@@ -13,22 +11,24 @@ interface IRecipes {
 }
 
 export default function ContainerRecipes() {
-  const { data } = useQuery('foods', () => getSearchFoods());
+  const recipesContext = useRecipesContext();
+  const recipes = recipesContext?.receitas;
 
   return (
     <section
       className='
-        relative mt-10 flex w-full flex-wrap items-center justify-center
-        gap-2 md:w-[90%]
+        relative mt-10 flex w-full flex-wrap items-center
+        justify-center gap-2 md:w-[90%]
       '
     >
-      {data?.meals.map((recipe: IRecipes) => (
-        <RecipeCard
-          key={recipe.idMeal}
-          strMealThumb={recipe.strMealThumb}
-          strMeal={recipe.strMeal}
-        />
-      ))}
+      {recipes?.meals?.length &&
+        recipes?.meals.map((recipe: IRecipes) => (
+          <RecipeCard
+            key={recipe.idMeal}
+            strMealThumb={recipe.strMealThumb}
+            strMeal={recipe.strMeal}
+          />
+        ))}
     </section>
   );
 }

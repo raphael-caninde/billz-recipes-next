@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useQuery } from 'react-query';
 
+import { useRecipesContext } from '@/app/context/RecipesContext';
 import { faSearch, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -19,8 +20,7 @@ interface ICategory {
 
 export function Header() {
   const { data } = useQuery('category', getCategory);
-
-  console.log(data);
+  const { search, setSearch } = useRecipesContext();
 
   return (
     <header className='w-full border-b border-zinc-300'>
@@ -54,8 +54,11 @@ export function Header() {
           <form className='flex w-full'>
             <input
               className='w-full rounded-l p-2 tracking-wider outline-none'
+              name='search'
+              value={search}
               type='text'
               placeholder='search recipes...'
+              onChange={({ target }) => setSearch(target.value)}
             />
             <button
               className='
